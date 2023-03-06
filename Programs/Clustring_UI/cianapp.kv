@@ -1,0 +1,154 @@
+BoxLayoutExample:
+
+<BoxLayoutExample>:    
+    orientation: "vertical"
+    size_hint: 1,1
+    #pos_hint: {"center_x":0.0}
+    spacing: "10dp"
+    #padding: "10dp","10dp","10dp","10dp"
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: root.pos
+            size: root.size
+    BoxLayout:
+        Label:
+            font_size: "30dp"
+            text : "Алгоритм"
+            size_hint: 0.25,1
+            color: 0.255, 0.255, 0.255, 1
+        Spinner:
+            size_hint: 0.5, 0.5
+            pos_hint : {"center_y":0.5}
+            font_size: "20dp"
+            text: 'DBSCAN'
+            values: 'DBSCAN','Мой алгоритм'
+            on_text: root.ALGORITHM = str(self.text) 
+
+    BoxLayout:
+        Label:
+            font_size: "30dp"
+            text : "Тип дома"
+            size_hint: 0.25,1
+            color: 0.255, 0.255, 0.255, 1
+        Spinner:
+            size_hint: 0.5, 0.5
+            pos_hint : {"center_y":0.5}
+            font_size: "20dp"
+            text: 'кирпичный'
+            values: 'блочный', 'кирпичный', 'монолитный', 'монолитно-кирпичный','панельный','не важно'
+            on_text: root.TIPDOMA = str(self.text) 
+    BoxLayout:
+        Label:
+            font_size: "30dp"
+            text : "Тип ремонта"
+            size_hint: 0.25,1
+            color: 0.255, 0.255, 0.255, 1
+        Spinner:
+            size_hint: 0.5, 0.5
+            pos_hint : {"center_y":0.5}
+            font_size: "20dp"
+            text: 'не важно'
+            values: 'не важно', 'без ремонта', 'косметический', 'евроремонт','дизайнерский'
+            on_text: root.TIPREMONT = str(self.text) 
+    BoxLayout:
+        Label:
+            font_size: "30dp"
+            text : "Площадь от:"
+            size_hint: 0.25,1
+            color: 0.255, 0.255, 0.255, 1
+            
+        TextInput:
+            id : min_area
+            text : '40'
+            font_size: "25dp"
+            size_hint: 0.5, 0.5
+            pos_hint : {"center_y":0.5}
+            multiline : False            
+            
+    BoxLayout:
+        Label:
+            font_size: "30dp"
+            text : "Площадь до:"
+            size_hint: 0.25,1
+            color: 0.255, 0.255, 0.255, 1
+
+        TextInput:
+            id : max_area
+            text : '50'
+            font_size: "25dp"
+            color: 0.255, 0.255, 0.255, 1
+            size_hint: 0.5,  0.5
+            pos_hint : {"center_y":0.5}
+            multiline : False            
+
+
+    BoxLayout:
+        Label:
+            font_size: "30dp"
+            text : "Порог"
+            size_hint: 0.25,1
+            color: 0.255, 0.255, 0.255, 1
+
+        TextInput:
+            id : eps
+            text : '0.015'
+            font_size: "25dp"
+            color: 0.255, 0.255, 0.255, 1
+            size_hint: 0.5,  0.5
+            pos_hint : {"center_y":0.5}
+            multiline : False            
+
+    
+    BoxLayout:
+        orientation : "vertical"
+        BoxLayout:
+            Label:
+                text : "График:"
+                color: 0.255, 0.255, 0.255, 1
+                font_size: "20dp"
+                size_hint : 0.75,1
+            Button:
+                text: "Баз. кластеры"
+                #font_name: "Lcd.ttf"
+                font_size: "20dp"
+                on_press: root.clicked_button(self,min_area,max_area,eps)    
+
+            Button:
+                text: "Без оценки"
+                #font_name: "Lcd.ttf"
+                font_size: "20dp"
+                on_press: root.clicked_button(self,min_area,max_area,eps)    
+            Button:
+                text: "С оценкой"
+                #font_name: "Lcd.ttf"
+                font_size: "20dp"
+                on_press: root.clicked_button(self,min_area,max_area,eps)
+        BoxLayout:
+            Label:
+                text : "Выгрузить:"
+                color: 0.255, 0.255, 0.255, 1
+                font_size: "20dp"                
+            Button:
+                text: "Детали"
+                #font_name: "Lcd.ttf"
+                font_size: "20dp"
+                on_press: root.clicked_button(self,min_area,max_area,eps)
+            Button:
+                text: "Кластеризация"
+                #font_name: "Lcd.ttf"
+                font_size: "20dp"
+                on_press: root.clicked_button(self,min_area,max_area,eps)      
+            Button:
+                text: "Предсказание"
+                #font_name: "Lcd.ttf"
+                font_size: "20dp"
+                on_press: root.clicked_button(self,min_area,max_area,eps)    
+            Button:
+                text: "Вместе"
+                #font_name: "Lcd.ttf"
+                font_size: "20dp"
+                on_press: root.clicked_button(self,min_area,max_area,eps)    
+
+
